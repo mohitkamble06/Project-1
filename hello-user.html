@@ -65,6 +65,17 @@
       animation: enter .75s cubic-bezier(.2, .8, .2, 1) both;
     }
 
+    nav {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      display: flex;
+      gap: 16px;
+    }
+
+    nav a { color: var(--muted); font-size: .9rem; font-weight: 750; text-decoration: none; }
+    nav a:hover, nav a[aria-current="page"] { color: var(--purple); }
+
     .sparkle {
       display: inline-grid;
       place-items: center;
@@ -142,6 +153,11 @@
   <div class="orb orb-two"></div>
 
   <main>
+    <nav aria-label="Main navigation">
+      <a href="hello-user.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
     <div class="sparkle" aria-hidden="true">✦</div>
     <p class="eyebrow">A little moment, just for you</p>
     <h1>Hello, <span>User!</span></h1>
