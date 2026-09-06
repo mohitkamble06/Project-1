@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="A warm welcome page for every user." />
+  <title>Hello, User!</title>
+  <style>
+    :root {
+      --ink: #17203d;
+      --muted: #66708c;
+      --card: rgba(255, 255, 255, 0.76);
+      --purple: #7255f6;
+      --pink: #e54fa8;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      min-height: 100vh;
+      margin: 0;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+      padding: 24px;
+      color: var(--ink);
+      font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      background: #f7f5ff;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(2px);
+      opacity: .75;
+      pointer-events: none;
+    }
+
+    .orb-one {
+      width: 360px;
+      height: 360px;
+      top: -110px;
+      left: -100px;
+      background: radial-gradient(circle at 65% 65%, #c1b6ff, #836cf7 62%, transparent 63%);
+    }
+
+    .orb-two {
+      width: 430px;
+      height: 430px;
+      right: -145px;
+      bottom: -170px;
+      background: radial-gradient(circle at 35% 35%, #ffd3ed, #f281bf 61%, transparent 62%);
+    }
+
+    main {
+      width: min(100%, 760px);
+      position: relative;
+      padding: clamp(36px, 8vw, 74px);
+      text-align: center;
+      border: 1px solid rgba(255, 255, 255, .9);
+      border-radius: 32px;
+      background: var(--card);
+      box-shadow: 0 26px 70px rgba(77, 55, 156, .18);
+      backdrop-filter: blur(16px);
+      animation: enter .75s cubic-bezier(.2, .8, .2, 1) both;
+    }
+
+    nav {
+      position: absolute;
+      top: 22px;
+      right: 26px;
+      display: flex;
+      gap: 16px;
+    }
+
+    nav a { color: var(--muted); font-size: .9rem; font-weight: 750; text-decoration: none; }
+    nav a:hover, nav a[aria-current="page"] { color: var(--purple); }
+
+    .sparkle {
+      display: inline-grid;
+      place-items: center;
+      width: 72px;
+      height: 72px;
+      margin-bottom: 22px;
+      font-size: 34px;
+      border-radius: 22px;
+      background: linear-gradient(135deg, #8067ff, #ee69b6);
+      box-shadow: 0 14px 30px rgba(151, 86, 226, .3);
+      transform: rotate(-7deg);
+    }
+
+    .eyebrow {
+      margin: 0 0 12px;
+      color: var(--purple);
+      font-size: .78rem;
+      font-weight: 800;
+      letter-spacing: .15em;
+      text-transform: uppercase;
+    }
+
+    h1 {
+      margin: 0;
+      font-size: clamp(2.8rem, 9vw, 5.8rem);
+      line-height: .98;
+      letter-spacing: -.075em;
+    }
+
+    h1 span {
+      color: transparent;
+      background: linear-gradient(100deg, var(--purple), var(--pink));
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .message {
+      max-width: 520px;
+      margin: 24px auto 32px;
+      color: var(--muted);
+      font-size: clamp(1rem, 2.2vw, 1.2rem);
+      line-height: 1.65;
+    }
+
+    button {
+      border: 0;
+      border-radius: 999px;
+      padding: 15px 24px;
+      color: white;
+      font: inherit;
+      font-weight: 750;
+      cursor: pointer;
+      background: linear-gradient(105deg, var(--purple), var(--pink));
+      box-shadow: 0 12px 24px rgba(126, 84, 225, .3);
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+
+    button:hover { transform: translateY(-3px); box-shadow: 0 17px 28px rgba(126, 84, 225, .38); }
+    button:focus-visible { outline: 3px solid #31277c; outline-offset: 4px; }
+
+    #note { min-height: 1.4em; margin: 20px 0 0; color: var(--purple); font-weight: 700; }
+
+    @keyframes enter {
+      from { opacity: 0; transform: translateY(18px) scale(.98); }
+      to { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <div class="orb orb-one"></div>
+  <div class="orb orb-two"></div>
+
+  <main>
+    <nav aria-label="Main navigation">
+      <a href="index.html" aria-current="page">Home</a>
+      <a href="about.html">About</a>
+      <a href="contact.html">Contact</a>
+    </nav>
+    <div class="sparkle" aria-hidden="true">✦</div>
+    <p class="eyebrow">A little moment, just for you</p>
+    <h1>Hello, <span>User!</span></h1>
+    <p class="message">Welcome to a fresh corner of the internet. The next great thing is waiting for your first click.</p>
+    <button type="button" id="welcome-button">Make it a great day →</button>
+    <p id="note" aria-live="polite"></p>
+  </main>
+
+  <script>
+    document.getElementById('welcome-button').addEventListener('click', () => {
+      document.getElementById('note').textContent = 'You’ve got this. ✨';
+    });
+  </script>
+</body>
+</html>
